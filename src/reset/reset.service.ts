@@ -13,4 +13,11 @@ export class ResetService {
     async create(reset : Reset):Promise<Reset>{
         return await this.resetRepository.save(reset);
     }
+    async findOne(condition):Promise<Reset>{
+        return await this.resetRepository.findOne(condition)
+    }
+    async findOneByToken(token: string): Promise<Reset | undefined> {
+        console.log('token',token)
+        return await this.resetRepository.findOne({ where: { token } });
+    }
 }
